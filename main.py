@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Entry point for the news-image-20261124 submission (v6 challenger).
+"""Entry point for the news-image-20261124 submission (v7 challenger).
 
 The page is a finished image: entry.png sits next to this file in the repo.
 This script only copies that committed image into the output directory.
 It never re-renders anything — the pixels submitted are the pixels built.
-v6: 40 stories, frozen winner template, full-day 24 Nov coverage.
+v7: 40 stories, frozen winner template, full-day 24 Nov coverage, v5
+sourcing discipline restored (per-story numbers, hedged bodies).
 """
 import hashlib
 import os
