@@ -294,25 +294,41 @@ def scene_tower(d, x, y, w, h):
 
 
 def scene_cartagena(d, x, y, w, h):
-    # dusk street, supermarket front with striped awning, police tape
+    # dusk street, supermarket front: sign band, scalloped striped awning,
+    # glass windows with shelves, dark door, police tape
     d.rectangle([x, y, x + w, y + h], fill=(214, 150, 90))
-    d.ellipse([x + w - 52, y + 8, x + w - 20, y + 32], fill=(244, 214, 140))
     # side buildings
     d.rectangle([x, y + 34, x + 34, y + h], fill=(30, 36, 54))
     d.rectangle([x + w - 34, y + 28, x + w, y + h], fill=(30, 36, 54))
     # shopfront
     sx, sw = x + 34, w - 68
     d.rectangle([sx, y + 26, sx + sw, y + h], fill=(232, 227, 214))
-    # awning stripes
+    # sign band: SUPERMARKET in white on navy
+    d.rectangle([sx, y + 6, sx + sw, y + 24], fill=(38, 62, 110))
+    f_sign = F_SANS_B(13)
+    sign = "SUPERMARKET"
+    swd = text_w(d, sign, f_sign)
+    d.text((sx + (sw - swd) / 2, y + 9), sign, font=f_sign, fill=(255, 255, 255))
+    # awning stripes with scalloped bottom edge
     n = 8
     aw = sw // n
     for i in range(n):
         d.rectangle([sx + i * aw, y + 26, sx + (i + 1) * aw, y + 40],
                     fill=RED if i % 2 == 0 else (255, 255, 255))
-    # warm lit windows, dark door
-    d.rectangle([sx + 12, y + 48, sx + 52, y + 76], fill=(250, 210, 90))
-    d.rectangle([sx + sw - 52, y + 48, sx + sw - 12, y + 76], fill=(250, 210, 90))
-    d.rectangle([sx + sw // 2 - 14, y + 48, sx + sw // 2 + 14, y + h],
+        d.ellipse([sx + i * aw, y + 36, sx + (i + 1) * aw, y + 44],
+                  fill=RED if i % 2 == 0 else (255, 255, 255))
+    # glass windows with shelves and goods
+    for wx in (sx + 12, sx + sw - 52):
+        d.rectangle([wx, y + 52, wx + 40, y + 78], fill=(180, 210, 220))
+        d.rectangle([wx, y + 52, wx + 40, y + 78], outline=INK, width=1)
+        for sy in (y + 61, y + 70):
+            d.line([(wx + 2, sy), (wx + 38, sy)], fill=INK, width=1)
+        for gx, gy, gc in ((wx + 6, y + 55, RED), (wx + 20, y + 55, (46, 110, 60)),
+                           (wx + 30, y + 55, (232, 130, 30)), (wx + 10, y + 64, (46, 110, 60)),
+                           (wx + 26, y + 64, RED), (wx + 16, y + 73, (232, 130, 30))):
+            d.rectangle([gx, gy, gx + 6, gy + 5], fill=gc)
+    # dark door
+    d.rectangle([sx + sw // 2 - 14, y + 52, sx + sw // 2 + 14, y + h],
                 fill=(38, 50, 74))
     # police tape across the front
     ty = y + h - 14
@@ -354,7 +370,7 @@ def icon_tower(d, ox, oy):
     d.rectangle([ox + 10, oy + 10, ox + 22, oy + 30], fill=INK)
     d.line([(ox + 16, oy + 10), (ox + 16, oy + 3)], fill=INK, width=2)
     for wy in (14, 19, 24):
-        d.rectangle([ox + 13, wy, ox + 19, wy + 3], fill=PAPER)
+        d.rectangle([ox + 13, oy + wy, ox + 19, oy + wy + 3], fill=PAPER)
 
 
 def icon_trophy(d, ox, oy):
