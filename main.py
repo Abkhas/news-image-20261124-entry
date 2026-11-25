@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Entry point for the news-image-20261124 submission (v8 challenger).
+"""Entry point for the news-image-20261124 submission (v9 challenger).
 
 The page is a finished image: entry.png sits next to this file in the repo.
 This script only copies that committed image into the output directory.
 It never re-renders anything — the pixels submitted are the pixels built.
-v8: 40 stories, frozen winner template, full-day 24 Nov coverage, v5
-sourcing discipline kept (per-story numbers, hedged bodies) + SELECTION
-rebalanced — top 10 down from 4 US beats to 3, Sudan / WHO-Cuba /
-Gaza-meningitis promoted into the grid, false Anthropic IPO line removed.
+v9: 40 stories, frozen winner template, full-day 24 Nov coverage, v8
+selection kept (40 stories, per-story numbers, hedged bodies) + Gaza
+duplication fixed (meningitis to ALSO ON, PIF tower to grid card 9) and
+the hero triptych widened (Cartagena siege replaces the PIF tower as hero
+3, Iraq oilfields take grid card 5) — same 40 stories, only rearranged.
 """
 import hashlib
 import os
